@@ -14,7 +14,8 @@ export default function BasicInfo() {
         description_header: "",
         image: "",
         description:"",
-        about: ""
+        about: "",
+        skills: ""
     })
     const [status, setStatus] = useState(-1)
     const url = process.env.basicInfoUrl || "http://localhost:8080/resume/addBasicInfo"
@@ -53,6 +54,10 @@ export default function BasicInfo() {
                         <Form.Group className='mb-3 form'>
                             <Form.Label>Experience Thumbnail Name</Form.Label><br/>
                             <Form.Control onChange={onChange} id="experience" value={data.experience} type="text" placeholder='Enter Thumbnail Experience'></Form.Control>
+                        </Form.Group>
+                        <Form.Group className='mb-3 form'>
+                            <Form.Label>Skills Thumbnail Name</Form.Label><br/>
+                            <Form.Control onChange={onChange} id="skills" value={data.skills} type="text" placeholder='Enter Thumbnail Skill'></Form.Control>
                         </Form.Group>
                         <Form.Group className='mb-3 form'>
                             <Form.Label>About Us</Form.Label><br/>

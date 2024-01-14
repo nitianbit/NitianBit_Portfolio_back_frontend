@@ -12,7 +12,11 @@ export default function Projects() {
         startDate: "",
         endDate: "",
         title: "",
-        link:""
+        link:"",
+        githubLink:"",
+        skillClass:"",
+        name:"",
+        description: ""
     })
     const [status, setStatus] = useState(-1)
     const url = process.env.projectUrl || "http://localhost:8080/resume/addProject"
@@ -23,9 +27,36 @@ export default function Projects() {
         setSkill(newData)
     }
 
+    const createArrayFromString = (str) =>{
+        let temp = ""
+        let tech = []
+        for(let i =0;i<str.length;i++)
+        {
+            if(str[i] == ',' || str[i] == ' ')
+            {
+                if(temp != "")
+                {
+                    tech.push(temp);
+                    temp=""
+                }
+            }
+            else
+            temp +=str[i]
+        }
+        if(temp!="")
+        tech.push(temp)
+        return tech
+    }
+
     const onSubmit = (e) =>{
         e.preventDefault()
         console.log(url)
+        const newSkillClass = createArrayFromString(data.skillClass)
+        const newName = createArrayFromString(data.name)
+
+        data.skillClass= newSkillClass
+        data.name = newName
+
         axios.put(url,data)
         .then(res=>{
             if(res.data)
@@ -58,8 +89,24 @@ export default function Projects() {
             <Form.Control onChange={onChange} style={{width:'300px'}} id="title" value ={data.title} type="text" placeholder='Enter Title of Project'></Form.Control>
         </Form.Group>
         <Form.Group className='mb-3 form'>
+            <Form.Label>Description of Project </Form.Label><br/>
+            <Form.Control onChange={onChange} style={{width:'300px'}} id="description" value ={data.description} type="text" placeholder='Enter Description of Project'></Form.Control>
+        </Form.Group>
+        <Form.Group className='mb-3 form'>
             <Form.Label>Link of Project </Form.Label><br/>
             <Form.Control onChange={onChange} style={{width:'300px'}} id="link" value ={data.link} type="text" placeholder='Enter Link of Project'></Form.Control>
+        </Form.Group>
+        <Form.Group className='mb-3 form'>
+            <Form.Label>Github Link of Project </Form.Label><br/>
+            <Form.Control onChange={onChange} style={{width:'300px'}} id="githubLink" value ={data.githubLink} type="text" placeholder='Enter Github Link of Project'></Form.Control>
+        </Form.Group>
+        <Form.Group className='mb-3 form'>
+            <Form.Label>Skill Class Name </Form.Label><br/>
+            <Form.Control onChange={onChange} style={{width:'300px'}} id="skillClass" value ={data.skillClass} type="text" placeholder='Enter Skill Class with comma seprated'></Form.Control>
+        </Form.Group>
+        <Form.Group className='mb-3 form'>
+            <Form.Label>Name of Skill</Form.Label><br/>
+            <Form.Control onChange={onChange} style={{width:'300px'}} id="name" value ={data.name} type="text" placeholder='Enter skill Name'></Form.Control>
         </Form.Group>
         <Button type='submit' className='drop'>Submit</Button>
         </Form>  

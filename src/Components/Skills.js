@@ -38,11 +38,11 @@ export default function Skills() {
        <Form onSubmit={onSubmit} className='container'>
         <h2>Skills Details</h2>
         <Form.Group className='mb-3 form'>
-            <Form.Label>Skill Name </Form.Label><br/>
+            <Form.Label>Skill Class Name </Form.Label><br/>
             <Form.Control onChange={onChange} style={{width:'300px'}} id="skillClass" value ={data.skillClass} type="text" placeholder='Enter Skill Name'></Form.Control>
         </Form.Group>
         <Form.Group className='mb-3 form'>
-            <Form.Label>Skill Class Name </Form.Label><br/>
+            <Form.Label>Skill Name </Form.Label><br/>
             <Form.Control onChange={onChange} style={{width:'300px'}} id="name" value ={data.name} type="text" placeholder='Enter Skill Class Name'></Form.Control>
         </Form.Group>
         <Button type='submit' className='drop'>Submit</Button>

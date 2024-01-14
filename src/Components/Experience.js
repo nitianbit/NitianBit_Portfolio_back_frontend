@@ -8,6 +8,9 @@ import '../Assets/drop.css'
 
 export default function Experience() {
     const [data, setSkill] = useState({
+        company:"",
+        title:"",
+        years:"",
         technologies:"",
         mainTech:""
     })
@@ -45,10 +48,9 @@ export default function Experience() {
         let tech = createArrayFromString(data.technologies)
         let mainTech = createArrayFromString(data.mainTech)
         
-        await axios.put(url, {
-            technologies: tech,
-            mainTech
-        })
+        data.technologies = tech
+        data.mainTech = mainTech
+        await axios.put(url, data)
         .then(res=>{
             console.log(res)
             if(res.data)
@@ -65,6 +67,18 @@ export default function Experience() {
  <div className='container'>
        <Form onSubmit={onSubmit} className='container'>
         <h2>Experience Details</h2>
+        <Form.Group className='mb-3 form'>
+            <Form.Label>Comapny </Form.Label> <br/> 
+            <Form.Control onChange={onChange} style={{width:'600px'}} id="company"  value ={data.company} type="text" placeholder='Enter Company'></Form.Control>
+        </Form.Group>
+        <Form.Group className='mb-3 form'>
+            <Form.Label>Title </Form.Label> <br/> 
+            <Form.Control onChange={onChange} style={{width:'600px'}} id="title"  value ={data.title} type="text" placeholder='Enter Title of Experience'></Form.Control>
+        </Form.Group>
+        <Form.Group className='mb-3 form'>
+            <Form.Label>Years </Form.Label> <br/> 
+            <Form.Control onChange={onChange} style={{width:'600px'}} id="years"  value ={data.years} type="text" placeholder='Enter Years of Experience or Range of Date'></Form.Control>
+        </Form.Group>
         <Form.Group className='mb-3 form'>
             <Form.Label>Technologies </Form.Label> <br/> 
             <Form.Control onChange={onChange} style={{width:'600px'}} id="technologies"  value ={data.technologies} type="text" placeholder='Enter Technologies comma seperated'></Form.Control>
