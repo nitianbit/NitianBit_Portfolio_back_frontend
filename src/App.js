@@ -5,6 +5,7 @@ import Projects from './Components/Projects'
 import Experience from './Components/Experience'
 import Home from './Components/Home'
 import BasicInfo from './Components/BasicInfo'
+ 
 
 export default function App() {
   return (

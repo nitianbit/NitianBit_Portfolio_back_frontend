@@ -19,7 +19,7 @@ export default function Projects() {
         description: ""
     })
     const [status, setStatus] = useState(-1)
-    const url = process.env.projectUrl || "http://localhost:8080/resume/addProject"
+    const url = process.env.REACT_APP_PROJECTURL || "http://localhost:8080/resume/addProject"
  
     const onChange = (e) =>{
         const newData = {...data}
@@ -32,7 +32,7 @@ export default function Projects() {
         let tech = []
         for(let i =0;i<str.length;i++)
         {
-            if(str[i] == ',' || str[i] == ' ')
+            if(str[i] == ',')
             {
                 if(temp != "")
                 {
@@ -53,9 +53,11 @@ export default function Projects() {
         console.log(url)
         const newSkillClass = createArrayFromString(data.skillClass)
         const newName = createArrayFromString(data.name)
+        const images = createArrayFromString(data.images)
 
         data.skillClass= newSkillClass
         data.name = newName
+        data.images = images
 
         axios.put(url,data)
         .then(res=>{
