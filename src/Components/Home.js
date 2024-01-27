@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import '../Assets/drop.css'
 import '../Assets/style.css'
 
 
 export default function Home() {
+    
     return (
         <div className='container'>
  

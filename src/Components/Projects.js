@@ -19,7 +19,7 @@ export default function Projects() {
         description: ""
     })
     const [status, setStatus] = useState(-1)
-    const url = process.env.REACT_APP_PROJECTURL || "http://localhost:8080/resume/addProject"
+    const url = process.env.REACT_APP_PROJECTURL
  
     const onChange = (e) =>{
         const newData = {...data}

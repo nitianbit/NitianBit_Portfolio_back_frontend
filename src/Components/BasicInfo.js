@@ -18,7 +18,7 @@ export default function BasicInfo() {
         skills: ""
     })
     const [status, setStatus] = useState(-1)
-    const url = process.env.REACT_APP_BASICINFOURL || "http://localhost:8080/resume/addBasicInfo"
+    const url = process.env.REACT_APP_BASICINFOURL
 
     const onChange = (e) => {
         const newData = { ...data }

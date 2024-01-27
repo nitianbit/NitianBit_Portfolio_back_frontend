@@ -15,7 +15,7 @@ export default function Experience() {
         mainTech:""
     })
     const [status, setStatus] = useState(-1)
-    const url = process.env.REACT_APP_EXPERIENCEURL || "http://localhost:8080/resume/addExperience"
+    const url = process.env.REACT_APP_EXPERIENCEURL
  
     const onChange = (e) =>{
         const newData = {...data}

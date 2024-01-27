@@ -12,7 +12,7 @@ export default function Skills() {
         name: ""
     })
     const [status, setStatus] = useState(-1)
-    const url = process.env.REACT_APP_SKILLURL || "http://localhost:8080/resume/addSharedSkills"
+    const url = process.env.REACT_APP_SKILLURL
  
     const onChange = (e) =>{
         const newData = {...data}
